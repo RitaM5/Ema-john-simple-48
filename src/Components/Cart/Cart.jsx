@@ -6,9 +6,11 @@ const Cart = (props) => {
 
    let total = 0;
    let shipping = 0;
+   let quantity = 0;
    for(const product of cart){
-       total = total + product.price;
-       shipping = shipping + product.shipping;
+       quantity = quantity + product.quantity;
+       total = total + product.price  * product.quantity;   
+       shipping = shipping + product.shipping ;
    }
 
    //for tax: dosomik numbers k 2 decimel a nise toFixed kre.
@@ -19,7 +21,7 @@ const Cart = (props) => {
     return (
         <div className="cart">
              <h4 className="heading">Order Summery</h4>
-             <p>Selected items: {cart.length}</p>
+             <p>Selected items: {quantity}</p>
              <p>Total price: ${total}</p>
              <p>Shipping: {shipping}</p>
              <p>Tax: {tax}</p>
